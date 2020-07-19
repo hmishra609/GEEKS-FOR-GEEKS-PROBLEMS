@@ -20,6 +20,32 @@ for(int i=0;i<v;i++)
 }
 }
 
+void DFS_Iterative(vector<int> a[],int v,int source,vector<bool> &visited)
+{
+    stack<int> s;
+    s.push(source);
+        while(!s.empty())
+    {
+      int u=s.top();
+      s.pop();
+    if(!visited[u])
+    {
+      cout<<u<<" ";
+        visited[u]=true;
+    }
+      for(int k:a[u])
+      {
+            if(!visited[k])
+                {
+
+                s.push(k);
+                }
+        }
+
+    }
+}
+
+
 int main()
 {
     int v=8;
@@ -33,9 +59,16 @@ int main()
     addEdge(adj,2,3);
     addEdge(adj,3,4);
 
-    addEdge(adj,7,5);
+    addEdge(adj,6,5);
 
-    DFS(adj,v,8,visited);
+    //DFS(adj,v,8,visited);
+    for(int i=0;i<v;i++)
+    {
+        if(!visited[i])
+    DFS_Iterative(adj,v,i,visited);
+    }
+
+
 return 0;
 }
 
